@@ -4,21 +4,21 @@ import { View, Text, Image, TouchableOpacity } from '@components';
 import {connect} from 'react-redux';
 import {navigate} from '@services';
 import styles from './styles'
-import type {TGlobalState, TResetGlobal} from '@types';
+import type {TGlobalState, TResetGlobal, TSetToken} from '@types';
 import { ButtonPanel } from './ButtonPanel/ButtonPanel';
-import { resetGlobal } from '@reducers/global';
+import { resetGlobal, setToken } from '@reducers/global';
 
 // type TData = TGlobalState['data'];
 
 type TProps = {
 	resetGlobal: () => void,
 	global: any;
+	setToken: (arg: string) => void
 }
 
-const SignIn: React.FC<TProps> = ({resetGlobal, global}) => {
+const SignIn: React.FC<TProps> = ({resetGlobal, global, setToken}) => {
 	const { t } = useTranslation()
-  const onPressLogin = useCallback(() => console.log('login'), []); 
-  console.log(global, '<----global');
+  const onPressLogin = useCallback(() => setToken('AuthToken'), []); 
 	const onPressReset = useCallback(() => {
 		resetGlobal();
 		console.log(global);}, []);
@@ -39,9 +39,10 @@ const mapStateToProps = (state: TGlobalState) => ({
   global: state.global
 });
 const mapDispatchToProps = (
-  dispatch: Dispatch<TResetGlobal>,
+  dispatch: Dispatch<TResetGlobal | TSetToken>,
 ) => ({
   resetGlobal: () => dispatch(resetGlobal()),
+	setToken: (arg: string) => dispatch(setToken(arg))
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(SignIn);

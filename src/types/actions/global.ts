@@ -9,5 +9,9 @@ export type TSetFirstOpenApp = {
 	data: boolean;
 }
 export type TResetGlobal = {
-	type: string
+	type: string;
+}
+export type TSetToken = {
+	type: string;
+  data: 'authToken';
 }
