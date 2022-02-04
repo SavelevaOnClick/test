@@ -1,15 +1,13 @@
 import React from 'react';
 import {Text as RNText, TextProps} from 'react-native';
-import {useStyles} from './styles';
+import styles from './styles';
 
-const Text: React.FC<TextProps> = ({children, style, ...otherProps}) => {
-  const {styles} = useStyles();
+export const Text: React.FC<TextProps> = ({children, style, ...otherProps}) => {
   
   return (
-    <RNText style={[styles.defaultText, style]} {...otherProps}>
+    <RNText style={[styles.container, style]} {...otherProps}>
       {children}
     </RNText>
   );
 };
 
-export default Text;

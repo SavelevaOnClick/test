@@ -3,8 +3,8 @@ to: src/services/notifications/notifications.ts
 unless_exists: true
 ---
 import messaging, {
-  FirebaseMessagingTypes
-} from '@react-native-firebase/messaging';
+  MessagingTypes
+} from '@react-native-/messaging';
 import { Alert } from 'react-native';
 import { notificationsHandler } from './notificationsHandler';
 
@@ -32,20 +32,20 @@ export const notificationService: TNotificationService = {
       }
       messaging().setAutoInitEnabled(true);
       messaging().onMessage(
-        async (remoteMessage: FirebaseMessagingTypes.RemoteMessage) => {
+        async (remoteMessage: MessagingTypes.RemoteMessage) => {
           console.log('--- FOREGROUND', remoteMessage);
           notificationsHandler(remoteMessage);
         }
       );
       messaging().onNotificationOpenedApp(
-        async (remoteMessage: FirebaseMessagingTypes.RemoteMessage) => {
+        async (remoteMessage: MessagingTypes.RemoteMessage) => {
           console.log('--- BACKGROUND', remoteMessage);
           notificationsHandler(remoteMessage);
         }
       );
       messaging()
         .getInitialNotification()
-        .then((remoteMessage: FirebaseMessagingTypes.RemoteMessage | null) => {
+        .then((remoteMessage: MessagingTypes.RemoteMessage | null) => {
           console.log('--- QUIT', remoteMessage);
           notificationsHandler(remoteMessage);
         });
@@ -54,12 +54,12 @@ export const notificationService: TNotificationService = {
     }
   },
   checkPermission: async () => {
-    const permissionValue: FirebaseMessagingTypes.AuthorizationStatus =
+    const permissionValue: MessagingTypes.AuthorizationStatus =
       await messaging().hasPermission();
     return permissionValue > 0;
   },
   requestPermission: async () => {
-    const requestResult: FirebaseMessagingTypes.AuthorizationStatus =
+    const requestResult: MessagingTypes.AuthorizationStatus =
       await messaging().requestPermission();
     if (requestResult > 0) {
       notificationService.init();

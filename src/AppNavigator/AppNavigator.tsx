@@ -3,39 +3,22 @@ import {NavigationContainer} from '@react-navigation/native';
 import {createStackNavigator} from '@react-navigation/stack';
 import {
   Onboarding,
-  SignIn,
-  Home,
   // ADD NEW SCREEN
-} from '@screens';
+} from '../screens';
 import {navigationRef, onStateChange} from '@services';
 import {connect} from 'react-redux';
 import {TGlobalState} from '@types';
+import { HomeNavigator } from './stacks/HomeStack';
+import { AuthNavigator } from './stacks/AuthStack';
 
 type TProps = {
   global: TGlobalState['global'];
 };
 
 const RootStack = createStackNavigator();
-const AuthStack = createStackNavigator();
-const HomeStack = createStackNavigator();
-
-const AuthNavigator: React.FC = () => {
-  return (
-    <AuthStack.Navigator>
-      <AuthStack.Screen name="SignIn" component={SignIn} />
-    </AuthStack.Navigator>
-  );
-};
-
-const HomeNavigator: React.FC = () => {
-  return (
-    <HomeStack.Navigator>
-      <HomeStack.Screen name="Home" component={Home} />
-    </HomeStack.Navigator>
-  );
-};
 
 const AppNavigator: React.FC<TProps> = ({global}) => {
+  console.log('global', global);
   return (
     <NavigationContainer ref={navigationRef} onStateChange={onStateChange}>
       <RootStack.Navigator screenOptions={{headerShown: false, gestureEnabled: false}}>
@@ -47,9 +30,16 @@ const AppNavigator: React.FC<TProps> = ({global}) => {
 		  />
 		) :
 		 global.token ? (
-          <RootStack.Screen name="HomeNavigator" component={HomeNavigator} />
+          <RootStack.Screen
+            name="HomeNavigator"
+            component={HomeNavigator}
+            options={{headerShown: false}}
+             />
         ) : (
-          <RootStack.Screen name="AuthNavigator" component={AuthNavigator} />
+          <RootStack.Screen
+           name="AuthNavigator"
+            component={AuthNavigator}
+            options={{headerShown: false}} />
         )}
       </RootStack.Navigator>
     </NavigationContainer>

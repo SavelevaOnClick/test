@@ -3,7 +3,7 @@ to: src/services/notifications/notificationsHandler.ts
 unless_exists: true
 ---
 import {Platform} from 'react-native';
-import {FirebaseMessagingTypes} from '@react-native-firebase/messaging';
+import {MessagingTypes} from '@react-native-/messaging';
 import PushNotificationIOS from '@react-native-community/push-notification-ios';
 import PushNotification from 'react-native-push-notification';
 import { navigate } from '@services';
@@ -11,7 +11,7 @@ import { navigate } from '@services';
 // import { setNotifications, getNotifications } from '@reducers/notifications';
 // import { TNotification } from '@types';
 
-type TRemoteMessage = FirebaseMessagingTypes.RemoteMessage | null;
+type TRemoteMessage = MessagingTypes.RemoteMessage | null;
 
 // const notifications: TSubjectNotification[] = storage?.store?.getState().notifications;
 // const dispatchNotifications = (notifications: TNotification[]) => storage?.store?.dispatch(setNotifications(notifications))

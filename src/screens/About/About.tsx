@@ -3,7 +3,7 @@ import { useEffect, useState, useCallback, useMemo, useTranslation } from '@hook
 import { View, Text, Image, TouchableOpacity } from '@components'
 import {connect} from 'react-redux';
 import {navigate} from '@services';
-import styles from './styles'
+import styles from './styles';
 import {Dispatch} from 'redux';
 import type {TGlobalState} from '@types';
 
@@ -13,14 +13,15 @@ type TProps = {
 	
 }
 
-const Home: React.FC<TProps> = ({}) => {
+const About: React.FC<TProps> = ({}) => {
 	const { t } = useTranslation()
-  console.log('home');
+  console.log('about');
 	return (
 	<View style={styles.container}>
 		<Text>
-			Screen
+			AboutAs
 		</Text>
+    
 	</View>
 	)
 }
@@ -34,4 +35,4 @@ const mapDispatchToProps = (
   // getData: (arg: IGetData['data']) => dispatch(getData(arg)),
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(Home);
+export default connect(mapStateToProps, mapDispatchToProps)(About);

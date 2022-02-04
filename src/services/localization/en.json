@@ -1,4 +1,5 @@
 {
-  "Welcome Screen": "Welcome Screen",
-  "": ""
+  "start_btn_title": "добро пожаловать",
+  "reset_btn": "сброс",
+  "login_btn": "логин"
 }

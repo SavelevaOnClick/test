@@ -1,8 +1,8 @@
-import {makeStyles} from '@services';
+import {StyleSheet} from '@components';
+import {colors, fonts} from '@constants';
 
-export const useStyles = makeStyles(theme => ({
-  defaultText: {
-    padding: 0,
-    color: theme.text,
-  },
-}));
+export default StyleSheet.create({
+  container: {
+    flex: 1,
+},
+});

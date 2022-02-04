@@ -1,10 +1,10 @@
 import {all} from 'redux-saga/effects';
-import {watch_global} from './global';
+import {watchGlobal} from './global';
 // ADD IMPORT
 
 export default function* rootSaga() {
   yield all([
-    watch_global(),
+    watchGlobal(),
     // ADD WATCHER
   ]);
 }

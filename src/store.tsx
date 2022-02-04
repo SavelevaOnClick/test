@@ -18,10 +18,10 @@ const persistConfig = {
   whitelist: ['global'],
 };
 
-if (__DEV__) {
-  const createFlipperDebugger = require('redux-flipper').default;
-  middlewares.push(createFlipperDebugger());
-}
+// if (__DEV__) {
+//   const createFlipperDebugger = require('redux-flipper').default;
+//   middlewares.push(createFlipperDebugger());
+// }
 
 const persistedReducer = persistReducer(persistConfig, reducers);
 
