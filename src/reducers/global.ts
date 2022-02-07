@@ -11,6 +11,7 @@ const SET_TOKEN = '[global] SET_TOKEN';
 const SET_LANG = '[global] SET_LANG';
 const LOG_OUT = '[global] LOG_OUT';
 const RESET_GLOBAL = '[global] RESET_GLOBAL';
+const LOGIN = '[global] LOGIN';
 
 type TGlobal = TGlobalState['global'];
 
